@@ -1,5 +1,5 @@
 {% set name = "icub-models" %}
-{% set version = "1.23.0" %}
+{% set version = "1.19.0" %}
 
 package:
   name: {{ name }}
@@ -25,31 +25,6 @@ requirements:
     - ninja
     - multisheller
 
-  host:
-    - python
-    - pip
-    - pybind11
-    - pybind11-abi
-  run:
-    - python
-    
-
-test:
-  commands:
-    - test -f ${PREFIX}/include/iCubModels/iCubModels.h  # [not win]
-    - test -f ${PREFIX}/lib/libicub-models.so  # [linux]
-    - test -f ${PREFIX}/lib/libicub-models.dylib  # [osx]
-    - test -f ${PREFIX}/lib/cmake/icub-models/icub-modelsConfig.cmake  # [not win]
-    - if not exist %PREFIX%\\Library\\include\\iCubModels\\iCubModels.h exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\lib\\icub-models.lib exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\bin\\icub-models.dll exit 1  # [win]
-    - if not exist %PREFIX%\\Library\\CMake\\icub-modelsConfig.cmake exit 1  # [win]
-    - test $(pip list | grep icub-models | tr -s " " | grep $PKG_VERSION | wc -l) -eq 1  # [unix]
-    - pip check
-  imports:
-    - icub_models
-  requires:
-    - pip
 
 about:
   home: https://github.com/robotology/icub-models
