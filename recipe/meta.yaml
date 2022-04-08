@@ -1,5 +1,5 @@
 {% set name = "icub-models" %}
-{% set version = "1.23.2" %}
+{% set version = "1.23.3" %}
 
 package:
   name: {{ name }}
