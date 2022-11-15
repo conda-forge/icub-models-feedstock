@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/robotology/icub-models/archive/refs/tags/v{{ version }}.tar.gz
   sha256: d70a1be717b432ff234db3ba106f144c4a5c1b76d7053add2ebf0e3c0288a71a
+  patches:
+    - 179.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage(name, max_pin='x') }}
 
@@ -31,6 +33,14 @@ requirements:
 
 
 test:
+  requires:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - ninja
+    - cmake
+    - pip
+  files:
+    - test
   commands:
     - test -f ${PREFIX}/include/iCubModels/iCubModels.h  # [not win]
     - test -f ${PREFIX}/lib/libicub-models.so  # [linux]
@@ -44,8 +54,6 @@ test:
     - pip check
   imports:
     - icub_models
-  requires:
-    - pip
 
 about:
   home: https://github.com/robotology/icub-models
