@@ -31,6 +31,14 @@ requirements:
 
 
 test:
+  requires:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - ninja
+    - cmake
+    - pip
+  files:
+    - test
   commands:
     - test -f ${PREFIX}/include/iCubModels/iCubModels.h  # [not win]
     - test -f ${PREFIX}/lib/libicub-models.so  # [linux]
@@ -44,8 +52,6 @@ test:
     - pip check
   imports:
     - icub_models
-  requires:
-    - pip
 
 about:
   home: https://github.com/robotology/icub-models
