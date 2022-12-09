@@ -1,5 +1,5 @@
 {% set name = "icub-models" %}
-{% set version = "1.25.0" %}
+{% set version = "1.26.0" %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,7 @@ source:
     - 179.patch
 
 build:
-  number: 2
+  number: 0
   run_exports:
     - {{ pin_subpackage(name, max_pin='x') }}
 
