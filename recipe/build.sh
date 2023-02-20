@@ -13,13 +13,15 @@ cmake ${CMAKE_ARGS} -GNinja .. \
       -DBUILD_TESTING=ON \
       -DPython3_EXECUTABLE:PATH=$PYTHON \
       -DICUB_MODELS_USES_PYTHON:BOOL=ON \
-      -DICUB_MODELS_DETECT_ACTIVE_PYTHON_SITEPACKAGES:BOOL=ON \
+      -DICUB_MODELS_DETECT_ACTIVE_PYTHON_SITEPACKAGES:BOOL=OFF \
       -DICUB_MODELS_PYTHON_PIP_METADATA_INSTALL:BOOL=ON \
       -DICUB_MODELS_PYTHON_PIP_METADATA_INSTALLER=conda
 
 cmake --build . --config Release
 cmake --build . --config Release --target install
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 ctest --output-on-failure -C Release
+fi
 
 # Generate and copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
