@@ -19,7 +19,9 @@ cmake ${CMAKE_ARGS} -GNinja .. \
 
 cmake --build . --config Release
 cmake --build . --config Release --target install
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 ctest --output-on-failure -C Release
+fi
 
 # Generate and copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
