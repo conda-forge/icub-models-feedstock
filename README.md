@@ -1,11 +1,11 @@
-About icub-models
-=================
+About icub-models-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/icub-models-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/robotology/icub-models
 
 Package license: CC-BY-SA-4.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/icub-models-feedstock/blob/main/LICENSE.txt)
 
 Summary: Official URDF and SDF models of the iCub humanoid robot.
 
