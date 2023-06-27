@@ -1,5 +1,5 @@
 {% set name = "icub-models" %}
-{% set version = "2.1.0" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/robotology/icub-models/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 1ceb4fdaee943092f5a752bb90542807bdf7e57f8e05e5bf8c2de812c54a8c3e
+  sha256: 8968031fb5608a7af8ae0e6ae6a0cd4e43dd7f91aa7bdf3235e91ed77e60e77c
   patches:
     - 179.patch
 
