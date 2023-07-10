@@ -1,0 +1,66 @@
+From 7676a9cf3efbf769cf662775d55c3b3030798455 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio.traversaro@iit.it>
+Date: Mon, 10 Jul 2023 15:50:44 +0200
+Subject: [PATCH] Bump version to 2.2.2 (#206)
+
+---
+ CHANGELOG.md            | 11 ++++++++++-
+ CMakeLists.txt          |  2 +-
+ iCub_manual/package.xml |  2 +-
+ 3 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 89440b7..87d0140 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -5,7 +5,13 @@ The format of this document is based on [Keep a Changelog](https://keepachangelo
+ 
+ ## [Unreleased]
+ 
+-# [2.2.0] - 2023-06-27
++# [2.2.2] - 2023-07-10
++
++### Fixed
++
++* Fix version number in CMake and package.xml files.
++
++# [2.2.1] - 2023-07-10
+ 
+ ### Fixed
+ 
+@@ -15,6 +21,9 @@ The format of this document is based on [Keep a Changelog](https://keepachangelo
+ 
+ * Tune position PID gains for torso for iCub 2.* (https://github.com/robotology/icub-models-generator/pull/241).
+ 
++# [2.2.0] - 2023-06-27
++
++**Due to an error, this release did not contained improvements.**
+ 
+ # [2.1.0] - 2023-06-05
+ 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ce4a06..6e013bf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ cmake_minimum_required(VERSION 3.8)
+ 
+ project(icub-models
+-  VERSION 2.2.0)
++  VERSION 2.2.1)
+ 
+ include(GNUInstallDirs)
+ 
+diff --git a/iCub_manual/package.xml b/iCub_manual/package.xml
+index 5eb7f18..cee775f 100644
+--- a/iCub_manual/package.xml
++++ b/iCub_manual/package.xml
+@@ -1,6 +1,6 @@
+ <package>
+   <name>iCub</name>
+-  <version>2.0.1</version>
++  <version>2.2.1</version>
+   <description>
+     This is not an actual package, but rather a placeholder to 
+     make sure that the share/iCub directory is found as the 
+
