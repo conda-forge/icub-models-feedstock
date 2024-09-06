@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/robotology/icub-models/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 359f76624446c4f34f56162159a8d8c434512dc6bc0f5fce8f8c871f74932b03
-  patches:
-    - 179.patch
 
 build:
   number: 1
