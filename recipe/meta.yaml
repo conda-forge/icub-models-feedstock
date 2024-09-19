@@ -41,6 +41,7 @@ test:
     - ninja
     - cmake
     - pip
+    - libgazebo-yarp-plugins
   files:
     - test
   commands:
