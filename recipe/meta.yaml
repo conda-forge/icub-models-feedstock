@@ -41,7 +41,7 @@ test:
     - ninja
     - cmake
     - pip
-    - libgazebo-yarp-plugins
+    - libgazebo-yarp-plugins  # [not ppc64le]
   files:
     - test
   commands:
