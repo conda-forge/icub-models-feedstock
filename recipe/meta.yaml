@@ -30,7 +30,9 @@ requirements:
     - python
   run:
     - python
-
+  run_constrained:
+    # https://github.com/robotology/icub-models/releases/tag/v2.8.0
+    - libgazebo-yarp-plugins >=4.12.0
 
 test:
   requires:
