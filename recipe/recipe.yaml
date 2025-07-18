@@ -37,7 +37,7 @@ requirements:
     - python
   run_exports:
     - ${{ pin_subpackage(name, upper_bound='x') }}
-  run_constrained:
+  run_constraints:
     # https://github.com/robotology/icub-models/releases/tag/v2.8.0
     - libgazebo-yarp-plugins >=4.12.0
 
@@ -68,12 +68,12 @@ tests:
           - if not exist %PREFIX%\Library\lib\icub-models.lib exit 1
           - if not exist %PREFIX%\Library\bin\icub-models.dll exit 1
           - if not exist %PREFIX%\Library\CMake\icub-modelsConfig.cmake exit 1
-    python:
+  - python:
       imports:
         - icub_models
 
 about:
-  homepage : https://github.com/robotology/icub-models
+  homepage: https://github.com/robotology/icub-models
   license: CC-BY-SA-4.0
   license_file: LICENSE
   summary: Official URDF and SDF models of the iCub humanoid robot.
