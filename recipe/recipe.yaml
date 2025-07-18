@@ -73,7 +73,7 @@ tests:
         - icub_models
 
 about:
-  home: https://github.com/robotology/icub-models
+  homepage : https://github.com/robotology/icub-models
   license: CC-BY-SA-4.0
   license_file: LICENSE
   summary: Official URDF and SDF models of the iCub humanoid robot.
