@@ -1,0 +1,83 @@
+context:
+  name: icub-models
+  version: "3.1.0"
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/robotology/icub-models/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: fd54930764000148f63e28f611e11eb47a202c81ca43c963771c6bbf692c3b53
+
+build:
+  number: 0
+  script:
+    - if: unix
+      then: build.sh
+    - if: win
+      then: bld.bat
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - cmake
+    - pkg-config
+    - ninja
+    - multisheller
+  host:
+    - python
+  run:
+    - python
+  run_exports:
+    - ${{ pin_subpackage(name, upper_bound='x') }}
+  run_constrained:
+    # https://github.com/robotology/icub-models/releases/tag/v2.8.0
+    - libgazebo-yarp-plugins >=4.12.0
+
+tests:
+  - requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ninja
+        - cmake
+    files:
+      source:
+        - test
+    script:
+      - if: not win
+        then:
+          - test -f ${PREFIX}/include/iCubModels/iCubModels.h
+          - if: linux
+            then: test -f ${PREFIX}/lib/libicub-models.so
+          - if: osx
+            then: test -f ${PREFIX}/lib/libicub-models.dylib
+          - test -f ${PREFIX}/lib/cmake/icub-models/icub-modelsConfig.cmake
+          - if: unix
+            then: test $(pip list | grep icub-models | tr -s " " | grep $PKG_VERSION | wc -l) -eq 1
+      - if: win
+        then:
+          - if not exist %PREFIX%\Library\include\iCubModels\iCubModels.h exit 1
+          - if not exist %PREFIX%\Library\lib\icub-models.lib exit 1
+          - if not exist %PREFIX%\Library\bin\icub-models.dll exit 1
+          - if not exist %PREFIX%\Library\CMake\icub-modelsConfig.cmake exit 1
+    python:
+      imports:
+        - icub_models
+
+about:
+  home: https://github.com/robotology/icub-models
+  license: CC-BY-SA-4.0
+  license_file: LICENSE
+  summary: Official URDF and SDF models of the iCub humanoid robot.
+
+extra:
+  recipe-maintainers:
+    - traversaro
